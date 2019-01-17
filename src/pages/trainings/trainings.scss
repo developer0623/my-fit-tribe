@@ -1,0 +1,66 @@
+page-trainings {
+	
+.main-title
+				{
+					@include categories-title-style($black-d);
+					font-size: 10vw;
+				}
+	.listing-content {
+		.trainings-segment
+		{
+			padding: 14px 0px;
+			background-color: $white;
+			@include element-shadow();
+
+			@include segment-button-styles($theme-color-2);
+
+			.segment-button
+			{
+				@include segment-text-styles($white-d);
+			}
+		}
+	}
+
+		.list-big-content
+	{
+		background-color: color($colors, background, base);
+
+		.list-big
+		{
+			@include layout-list-styles($theme-color-2, $white-d);
+
+			ion-list {
+				.list-item
+				{
+					
+					.content-row
+					{
+						@include align-items(center);
+					}
+
+					.item-content
+					{
+						@include align-content(stretch);
+					  @include display(flex);
+					  @include flex-wrap(wrap);
+					  @include align-self(stretch);
+
+						.item-title
+						{
+							margin-bottom: 8px;
+							overflow: hidden;
+							text-overflow: ellipsis;
+							white-space: nowrap;
+						}
+
+						.item-description
+						{
+							@include multi-line-ellipsis($list-big-description-font-size);
+							word-break: break-word;
+						}
+					}
+				}
+			}
+		}
+	}
+}

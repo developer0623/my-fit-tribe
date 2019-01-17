@@ -1,0 +1,60 @@
+<ion-header class="listing-header">
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      <div class="header-logo">
+        <preload-image [ratio]="{w:583, h:100}" src="./assets/images/header_logo_white.png"></preload-image>
+      </div>
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="listing-content">
+ <!-- <background-image class="image-heading" [src]="listing.banner_image">
+    <ion-row class="heading-row">
+      <ion-col no-padding width-100>
+        <h2 class="main-title">{{listing.banner_title}}</h2>
+      </ion-col>
+    </ion-row>
+  </background-image>-->
+  <!--<div *ngIf="isTrial">
+    {{ trialRemaining }} Days of your free trial remaining!
+  </div>-->
+<div class="list-big-content">
+  <div class="list-big">
+    <ion-list>
+      <button class="list-item" ion-item *ngFor="let category of navigationList | async" (click)="goToPage(category)">
+        <ion-row no-padding class="content-row">
+          <ion-col no-padding width-33 class="item-avatar">
+            <!--<img [src]="'data:image/jpg;base64,' + category.imgbase" />-->
+            <!--<preload-image class="avatar-image" [ratio]="{w:1, h:1}" [src]="'data:image/jpg;base64,' + category.imgbase"></preload-image>-->
+            <img-loader [src]="category.image"></img-loader>
+          </ion-col>
+          <ion-col no-padding width-57 class="item-content">
+            <h3 class="item-title">{{category.title}}</h3>
+            <p class="item-description" rows="3">{{category.description}}</p>
+            <!-- You can change the rows quantity by using rows="X", where X can be any number for example: rows="4" -->
+          </ion-col>
+          <ion-col no-padding width-10 class="item-icon">
+            <ion-icon name="arrow-forward"></ion-icon>
+          </ion-col>
+        </ion-row>
+      </button>
+    </ion-list>
+  </div>
+</div>
+  <!--<h4 class="categories-title">Navigation</h4>
+  <ion-row class="grid-categories">
+    <ion-col width-50 class="category-item" *ngFor="let category of comeon">
+      <background-image tappable class="category-heading" [src]="category.image" (click)="goToPage(category)">
+        <ion-row class="heading-row">
+          <ion-col no-padding width-100>
+            <h2 class="category-title">{{category.title}}</h2>
+          </ion-col>
+        </ion-row>
+      </background-image>
+    </ion-col>
+  </ion-row>-->
+</ion-content>

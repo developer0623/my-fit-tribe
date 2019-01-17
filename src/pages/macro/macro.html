@@ -1,0 +1,67 @@
+<!--
+  Generated template for the MacroPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+        <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      <div class="header-logo">
+        <preload-image [ratio]="{w:583, h:100}" src="./assets/images/header_logo_white.png"></preload-image>
+      </div>
+    </ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+<!--<background-image class="image-heading" [src]="'./assets/images/listing/600x300banner1.png'">
+    <ion-row class="heading-row">
+      <ion-col no-padding width-100>
+        <h2 class="main-title">{{ article.name }}</h2>
+      </ion-col>
+    </ion-row>
+</background-image>-->
+
+  <ion-row class="contact-details-row" wrap>
+    <ion-col no-padding width-100>
+      <h2 class="contact-name">{{ article.name }}</h2>
+    </ion-col>
+
+    <ion-col no-padding width-100>
+      <p class="contact-description">
+        {{ article.byline }}
+      </p>
+    </ion-col>
+  </ion-row>
+
+<div padding [innerHTML]="article.content">
+<!--<h1 class="item-title">Imagine the scenario</h1>
+	<div class="item-text">
+		<p>You are out with friends for dinner several nights in a week. You choose the yummy pasta and a piece of garlic bread, you even indulge in a glass of red wine...BUT by the end of the week you can see your arms toning and that fat dropping from your body.</p>
+		<p>Does this seem like a dream? It doesn’t have to be. This is what happens when you decide to count your macros and STOP counting calories!</p>
+<h2 class="item-title">So what is Macros?</h2>
+<p>Any food consists of a combination of fats, carbs and proteins. Using these figures as our guide you can eat a variety of food, including indulging in your favourite dessert or snack more than you think as long as you stick within your daily macro requirements. A simple calculation is used to work out the amounts to aim for each day.</p>
+<h4 class="item-title">PROTEIN</h4>	
+<p>Without protein your body lacks the nutrients required for a great metabolism, healthy digestion and is essential for healing wounds and repairing tissue, especially in muscles, bones, skin and hair. Protein in your meals encourages weight loss as your body will seek energy from your stored fat. Reaching your protein goals is easiest eating meats, poultry, fish, cheese and milk. If you are vegetarian you can get plenty of protein if you keep a balanced diet incorporating nuts, legumes, and in smaller quantities starchy foods and vegetables.</p>
+<h4 class="item-title">CARBS</h4>
+<p>NOT the devil. If you are exercising regularly, they are essential for your energy levels. The only important factor is to focus on the most wholesome carbs you can find, not highly processed. For example a banana is much greater than a piece of white bread.</p>
+<h4 class="item-title">FATS</h4>
+<p>Fats are broken down into 3 categories. Polyunsaturated, Monounsaturated and Saturated. You roughly need equal amounts of all 3. <br><strong>Foods and oils that can help you effortlessly hit these fats:</strong></p>
+	<ol>
+		<li>Polyunsaturated: Walnuts & Chia seeds</li>
+		<li>Monounsaturated: Peanut Butter, avocado</li>
+		<li>Saturated: Dairy Products, Coconut Oil</li>
+	</ol>
+
+	</div>-->
+</div>
+
+</ion-content>

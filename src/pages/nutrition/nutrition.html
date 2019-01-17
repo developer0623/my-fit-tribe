@@ -1,0 +1,1131 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Nutrition</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="followers-content">
+  <!-- <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar> -->
+    <ion-segment class="schedule-segment" [(ngModel)]="segment" (ionChange)="onSegmentChanged($event)">
+    <ion-segment-button value="mealplan" (ionSelect)="onSegmentSelected($event)">
+      Meal Guide
+    </ion-segment-button>
+    <ion-segment-button value="recipes" (ionSelect)="onSegmentSelected($event)">
+      Recipes
+    </ion-segment-button>
+  </ion-segment>
+
+<div [ngSwitch]="segment">
+	<div *ngSwitchCase="'mealplan'">
+		    <ion-segment class="schedule-segment" [(ngModel)]="segmentDay" (ionChange)="onSegmentChanged($event)">
+    <ion-segment-button value="monday" (ionSelect)="onSegmentSelected($event)">
+      M
+    </ion-segment-button>
+    <ion-segment-button value="tuesday" (ionSelect)="onSegmentSelected($event)">
+      T
+    </ion-segment-button>
+    <ion-segment-button value="wednesday" (ionSelect)="onSegmentSelected($event)">
+      W
+    </ion-segment-button>
+    <ion-segment-button value="thursday" (ionSelect)="onSegmentSelected($event)">
+      T
+    </ion-segment-button>
+    <ion-segment-button value="friday" (ionSelect)="onSegmentSelected($event)">
+      F
+    </ion-segment-button>
+    <ion-segment-button value="saturday" (ionSelect)="onSegmentSelected($event)">
+      S
+    </ion-segment-button>
+    <ion-segment-button value="sunday" (ionSelect)="onSegmentSelected($event)">
+      S
+    </ion-segment-button>
+  </ion-segment>
+
+	<div [ngSwitch]="segmentDay">
+		<div *ngSwitchCase="'monday'">
+      <ion-item-group class="filters-group">
+        <div *ngFor="let guide of mealGuides | async | searchfilter: '$key' : 'monday'">
+          <div *ngFor="let key of guide.breakfast | keys">
+            <ion-item-divider>Breakfast</ion-item-divider>
+            <div class="list-mini-content">
+              <div class="list-mini">
+                <ion-list>
+                  <button class="list-item" 
+                    ion-item *ngFor="let item of recipes | async | searchfilter: '$key' : guide.breakfast[key].id" 
+                    (click)="toRecipePage(item)">
+                    <ion-row no-padding class="content-row one-line">
+                      <ion-col no-padding width-18 class="item-avatar">                        
+                        <img-loader [src]="item.image"></img-loader>
+                      </ion-col>
+                      <ion-col no-padding width-72 class="item-content">
+                        <h3 class="item-title">{{item.name}}</h3>
+                        <p class="item-description">Protein {{item.protein}} Carbs {{item.carbs}} Fats {{item.fats}}</p>
+                      </ion-col>
+                      <ion-col no-padding width-10 class="item-icon">
+                        <ion-icon name="arrow-forward"></ion-icon>
+                      </ion-col>
+                    </ion-row>
+                  </button>
+                </ion-list>
+              </div>
+            </div>
+          </div>           
+
+          <div *ngFor="let key of guide.snack_1 | keys">
+            <ion-item-divider>Snack</ion-item-divider>
+            <div class="list-mini-content">
+              <div class="list-mini">
+                <ion-list>
+                  <button class="list-item" 
+                    ion-item *ngFor="let item of recipes | async | searchfilter: '$key' : guide.snack_1[key].id" 
+                    (click)="toRecipePage(item)">
+                    <ion-row no-padding class="content-row one-line">
+                      <ion-col no-padding width-18 class="item-avatar">
+                        <img-loader [src]="item.image"></img-loader>
+                      </ion-col>
+                      <ion-col no-padding width-72 class="item-content">
+                        <h3 class="item-title">{{item.name}}</h3>
+                        <p class="item-description">Protein {{item.protein}} Carbs {{item.carbs}} Fats {{item.fats}}</p>
+                      </ion-col>
+                      <ion-col no-padding width-10 class="item-icon">
+                        <ion-icon name="arrow-forward"></ion-icon>
+                      </ion-col>
+                    </ion-row>
+                  </button>
+                </ion-list>
+              </div>
+            </div>
+          </div>          
+
+          <div *ngFor="let key of guide.lunch | keys">
+            <ion-item-divider>Lunch</ion-item-divider>
+            <div class="list-mini-content">
+              <div class="list-mini">
+                <ion-list>
+                  <button class="list-item" 
+                    ion-item *ngFor="let item of recipes | async | searchfilter: '$key' : guide.lunch[key].id" 
+                    (click)="toRecipePage(item)">
+                    <ion-row no-padding class="content-row one-line">
+                      <ion-col no-padding width-18 class="item-avatar">
+                        <img-loader [src]="item.image" ></img-loader>
+                      </ion-col>
+                      <ion-col no-padding width-72 class="item-content">
+                        <h3 class="item-title">{{item.name}}</h3>
+                        <p class="item-description">Protein {{item.protein}} Carbs {{item.carbs}} Fats {{item.fats}}</p>
+                      </ion-col>
+                      <ion-col no-padding width-10 class="item-icon">
+                        <ion-icon name="arrow-forward"></ion-icon>
+                      </ion-col>
+                    </ion-row>
+                  </button>
+                </ion-list>
+              </div>
+            </div>
+          </div>  
+
+          <div *ngFor="let key of guide.snack_2 | keys">
+            <ion-item-divider>Snack</ion-item-divider>
+            <div class="list-mini-content">
+              <div class="list-mini">
+                <ion-list>
+                  <button class="list-item" 
+                    ion-item *ngFor="let item of recipes | async | searchfilter: '$key' : guide.snack_2[key].id" 
+                    (click)="toRecipePage(item)">
+                    <ion-row no-padding class="content-row one-line">
+                      <ion-col no-padding width-18 class="item-avatar">
+                        <img-loader [src]="item.image" ></img-loader>
+                      </ion-col>
+                      <ion-col no-padding width-72 class="item-content">
+                        <h3 class="item-title">{{item.name}}</h3>
+                        <p class="item-description">Protein {{item.protein}} Carbs {{item.carbs}} Fats {{item.fats}}</p>
+                      </ion-col>
+                      <ion-col no-padding width-10 class="item-icon">
+                        <ion-icon name="arrow-forward"></ion-icon>
+                      </ion-col>
+                    </ion-row>
+                  </button>
+                </ion-list>
+              </div>
+            </div>
+          </div>         
+
+          <div *ngFor="let key of guide.dinner | keys">
+            <ion-item-divider>Dinner</ion-item-divider>
+            <div class="list-mini-content">
+              <div class="list-mini">
+                <ion-list>
+                  <button class="list-item" 
+                    ion-item *ngFor="let item of recipes | async | searchfilter: '$key' : guide.dinner[key].id" 
+                    (click)="toRecipePage(item)">
+                    <ion-row no-padding class="content-row one-line">
+                      <ion-col no-padding width-18 class="item-avatar">
+                        <img-loader [src]="item.image" ></img-loader>
+                      </ion-col>
+                      <ion-col no-padding width-72 class="item-content">
+                        <h3 class="item-title">{{item.name}}</h3>
+                        <p class="item-description">Protein {{item.protein}} Carbs {{item.carbs}} Fats {{item.fats}}</p>
+                      </ion-col>
+                      <ion-col no-padding width-10 class="item-icon">
+                        <ion-icon name="arrow-forward"></ion-icon>
+                      </ion-col>
+                    </ion-row>
+                  </button>
+                </ion-list>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ion-item-group>
+		</div>
+
+		<div *ngSwitchCase="'tuesday'">
+      <ion-item-group class="filters-group">
+        <div *ngFor="let guide of mealGuides | async | searchfilter: '$key' : 'tuesday'">
+          <div *ngFor="let key of guide.breakfast | keys">
+            <ion-item-divider>Breakfast</ion-item-divider>
+            <div class="list-mini-content">
+              <div class="list-mini">
+                <ion-list>
+                  <button class="list-item" 
+                    ion-item *ngFor="let item of recipes | async | searchfilter: '$key' : guide.breakfast[key].id" 
+                    (click)="toRecipePage(item)">
+                    <ion-row no-padding class="content-row one-line">
+                      <ion-col no-padding width-18 class="item-avatar">
+                        <img-loader [src]="item.image" ></img-loader>
+                      </ion-col>
+                      <ion-col no-padding width-72 class="item-content">
+                        <h3 class="item-title">{{item.name}}</h3>
+                        <p class="item-description">Protein {{item.protein}} Carbs {{item.carbs}} Fats {{item.fats}}</p>
+                      </ion-col>
+                      <ion-col no-padding width-10 class="item-icon">
+                        <ion-icon name="arrow-forward"></ion-icon>
+                      </ion-col>
+                    </ion-row>
+                  </button>
+                </ion-list>
+              </div>
+            </div>
+          </div>           
+
+          <div *ngFor="let key of guide.snack_1 | keys">
+            <ion-item-divider>Snack</ion-item-divider>
+            <div class="list-mini-content">
+              <div class="list-mini">
+                <ion-list>
+                  <button class="list-item" 
+                    ion-item *ngFor="let item of recipes | async | searchfilter: '$key' : guide.snack_1[key].id" 
+                    (click)="toRecipePage(item)">
+                    <ion-row no-padding class="content-row one-line">
+                      <ion-col no-padding width-18 class="item-avatar">
+                        <img-loader [src]="item.image" ></img-loader>
+                      </ion-col>
+                      <ion-col no-padding width-72 class="item-content">
+                        <h3 class="item-title">{{item.name}}</h3>
+                        <p class="item-description">Protein {{item.protein}} Carbs {{item.carbs}} Fats {{item.fats}}</p>
+                      </ion-col>
+                      <ion-col no-padding width-10 class="item-icon">
+                        <ion-icon name="arrow-forward"></ion-icon>
+                      </ion-col>
+                    </ion-row>
+                  </button>
+                </ion-list>
+              </div>
+            </div>
+          </div>          
+
+          <div *ngFor="let key of guide.lunch | keys">
+            <ion-item-divider>Lunch</ion-item-divider>
+            <div class="list-mini-content">
+              <div class="list-mini">
+                <ion-list>
+                  <button class="list-item" 
+                    ion-item *ngFor="let item of recipes | async | searchfilter: '$key' : guide.lunch[key].id" 
+                    (click)="toRecipePage(item)">
+                    <ion-row no-padding class="content-row one-line">
+                      <ion-col no-padding width-18 class="item-avatar">
+                        <img-loader [src]="item.image" ></img-loader>
+                      </ion-col>
+                      <ion-col no-padding width-72 class="item-content">
+                        <h3 class="item-title">{{item.name}}</h3>
+                        <p class="item-description">Protein {{item.protein}} Carbs {{item.carbs}} Fats {{item.fats}}</p>
+                      </ion-col>
+                      <ion-col no-padding width-10 class="item-icon">
+                        <ion-icon name="arrow-forward"></ion-icon>
+                      </ion-col>
+                    </ion-row>
+                  </button>
+                </ion-list>
+              </div>
+            </div>
+          </div>  
+
+          <div *ngFor="let key of guide.snack_2 | keys">
+            <ion-item-divider>Snack</ion-item-divider>
+            <div class="list-mini-content">
+              <div class="list-mini">
+                <ion-list>
+                  <button class="list-item" 
+                    ion-item *ngFor="let item of recipes | async | searchfilter: '$key' : guide.snack_2[key].id" 
+                    (click)="toRecipePage(item)">
+                    <ion-row no-padding class="content-row one-line">
+                      <ion-col no-padding width-18 class="item-avatar">
+                        <img-loader [src]="item.image" ></img-loader>
+                      </ion-col>
+                      <ion-col no-padding width-72 class="item-content">
+                        <h3 class="item-title">{{item.name}}</h3>
+                        <p class="item-description">Protein {{item.protein}} Carbs {{item.carbs}} Fats {{item.fats}}</p>
+                      </ion-col>
+                      <ion-col no-padding width-10 class="item-icon">
+                        <ion-icon name="arrow-forward"></ion-icon>
+                      </ion-col>
+                    </ion-row>
+                  </button>
+                </ion-list>
+              </div>
+            </div>
+          </div>         
+
+          <div *ngFor="let key of guide.dinner | keys">
+            <ion-item-divider>Dinner</ion-item-divider>
+            <div class="list-mini-content">
+              <div class="list-mini">
+                <ion-list>
+                  <button class="list-item" 
+                    ion-item *ngFor="let item of recipes | async | searchfilter: '$key' : guide.dinner[key].id" 
+                    (click)="toRecipePage(item)">
+                    <ion-row no-padding class="content-row one-line">
+                      <ion-col no-padding width-18 class="item-avatar">
+                        <img-loader [src]="item.image"></img-loader>
+                      </ion-col>
+                      <ion-col no-padding width-72 class="item-content">
+                        <h3 class="item-title">{{item.name}}</h3>
+                        <p class="item-description">Protein {{item.protein}} Carbs {{item.carbs}} Fats {{item.fats}}</p>
+                      </ion-col>
+                      <ion-col no-padding width-10 class="item-icon">
+                        <ion-icon name="arrow-forward"></ion-icon>
+                      </ion-col>
+                    </ion-row>
+                  </button>
+                </ion-list>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ion-item-group>
+		</div>
+
+    <div *ngSwitchCase="'wednesday'">
+      <ion-item-group class="filters-group">
+        <div *ngFor="let guide of mealGuides | async | searchfilter: '$key' : 'wednesday'">
+          <div *ngFor="let key of guide.breakfast | keys">
+            <ion-item-divider>Breakfast</ion-item-divider>
+            <div class="list-mini-content">
+              <div class="list-mini">
+                <ion-list>
+                  <button class="list-item" 
+                    ion-item *ngFor="let item of recipes | async | searchfilter: '$key' : guide.breakfast[key].id" 
+                    (click)="toRecipePage(item)">
+                    <ion-row no-padding class="content-row one-line">
+                      <ion-col no-padding width-18 class="item-avatar">
+                        <img-loader [src]="item.image" ></img-loader>
+                      </ion-col>
+                      <ion-col no-padding width-72 class="item-content">
+                        <h3 class="item-title">{{item.name}}</h3>
+                        <p class="item-description">Protein {{item.protein}} Carbs {{item.carbs}} Fats {{item.fats}}</p>
+                      </ion-col>
+                      <ion-col no-padding width-10 class="item-icon">
+                        <ion-icon name="arrow-forward"></ion-icon>
+                      </ion-col>
+                    </ion-row>
+                  </button>
+                </ion-list>
+              </div>
+            </div>
+          </div>           
+
+          <div *ngFor="let key of guide.snack_1 | keys">
+            <ion-item-divider>Snack</ion-item-divider>
+            <div class="list-mini-content">
+              <div class="list-mini">
+                <ion-list>
+                  <button class="list-item" 
+                    ion-item *ngFor="let item of recipes | async | searchfilter: '$key' : guide.snack_1[key].id" 
+                    (click)="toRecipePage(item)">
+                    <ion-row no-padding class="content-row one-line">
+                      <ion-col no-padding width-18 class="item-avatar">
+                        <img-loader [src]="item.image" ></img-loader>
+                      </ion-col>
+                      <ion-col no-padding width-72 class="item-content">
+                        <h3 class="item-title">{{item.name}}</h3>
+                        <p class="item-description">Protein {{item.protein}} Carbs {{item.carbs}} Fats {{item.fats}}</p>
+                      </ion-col>
+                      <ion-col no-padding width-10 class="item-icon">
+                        <ion-icon name="arrow-forward"></ion-icon>
+                      </ion-col>
+                    </ion-row>
+                  </button>
+                </ion-list>
+              </div>
+            </div>
+          </div>          
+
+          <div *ngFor="let key of guide.lunch | keys">
+            <ion-item-divider>Lunch</ion-item-divider>
+            <div class="list-mini-content">
+              <div class="list-mini">
+                <ion-list>
+                  <button class="list-item" 
+                    ion-item *ngFor="let item of recipes | async | searchfilter: '$key' : guide.lunch[key].id" 
+                    (click)="toRecipePage(item)">
+                    <ion-row no-padding class="content-row one-line">
+                      <ion-col no-padding width-18 class="item-avatar">
+                        <img-loader [src]="item.image" ></img-loader>
+                      </ion-col>
+                      <ion-col no-padding width-72 class="item-content">
+                        <h3 class="item-title">{{item.name}}</h3>
+                        <p class="item-description">Protein {{item.protein}} Carbs {{item.carbs}} Fats {{item.fats}}</p>
+                      </ion-col>
+                      <ion-col no-padding width-10 class="item-icon">
+                        <ion-icon name="arrow-forward"></ion-icon>
+                      </ion-col>
+                    </ion-row>
+                  </button>
+                </ion-list>
+              </div>
+            </div>
+          </div>  
+
+          <div *ngFor="let key of guide.snack_2 | keys">
+            <ion-item-divider>Snack</ion-item-divider>
+            <div class="list-mini-content">
+              <div class="list-mini">
+                <ion-list>
+                  <button class="list-item" 
+                    ion-item *ngFor="let item of recipes | async | searchfilter: '$key' : guide.snack_2[key].id" 
+                    (click)="toRecipePage(item)">
+                    <ion-row no-padding class="content-row one-line">
+                      <ion-col no-padding width-18 class="item-avatar">
+                        <img-loader [src]="item.image" ></img-loader>
+                      </ion-col>
+                      <ion-col no-padding width-72 class="item-content">
+                        <h3 class="item-title">{{item.name}}</h3>
+                        <p class="item-description">Protein {{item.protein}} Carbs {{item.carbs}} Fats {{item.fats}}</p>
+                      </ion-col>
+                      <ion-col no-padding width-10 class="item-icon">
+                        <ion-icon name="arrow-forward"></ion-icon>
+                      </ion-col>
+                    </ion-row>
+                  </button>
+                </ion-list>
+              </div>
+            </div>
+          </div>         
+
+          <div *ngFor="let key of guide.dinner | keys">
+            <ion-item-divider>Dinner</ion-item-divider>
+            <div class="list-mini-content">
+              <div class="list-mini">
+                <ion-list>
+                  <button class="list-item" 
+                    ion-item *ngFor="let item of recipes | async | searchfilter: '$key' : guide.dinner[key].id" 
+                    (click)="toRecipePage(item)">
+                    <ion-row no-padding class="content-row one-line">
+                      <ion-col no-padding width-18 class="item-avatar">
+                        <img-loader [src]="item.image" ></img-loader>
+                      </ion-col>
+                      <ion-col no-padding width-72 class="item-content">
+                        <h3 class="item-title">{{item.name}}</h3>
+                        <p class="item-description">Protein {{item.protein}} Carbs {{item.carbs}} Fats {{item.fats}}</p>
+                      </ion-col>
+                      <ion-col no-padding width-10 class="item-icon">
+                        <ion-icon name="arrow-forward"></ion-icon>
+                      </ion-col>
+                    </ion-row>
+                  </button>
+                </ion-list>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ion-item-group>
+    </div>
+
+    <div *ngSwitchCase="'thursday'">
+      <ion-item-group class="filters-group">
+        <div *ngFor="let guide of mealGuides | async | searchfilter: '$key' : 'thursday'">
+          <div *ngFor="let key of guide.breakfast | keys">
+            <ion-item-divider>Breakfast</ion-item-divider>
+            <div class="list-mini-content">
+              <div class="list-mini">
+                <ion-list>
+                  <button class="list-item" 
+                    ion-item *ngFor="let item of recipes | async | searchfilter: '$key' : guide.breakfast[key].id" 
+                    (click)="toRecipePage(item)">
+                    <ion-row no-padding class="content-row one-line">
+                      <ion-col no-padding width-18 class="item-avatar">
+                        <img-loader [src]="item.image" ></img-loader>
+                      </ion-col>
+                      <ion-col no-padding width-72 class="item-content">
+                        <h3 class="item-title">{{item.name}}</h3>
+                        <p class="item-description">Protein {{item.protein}} Carbs {{item.carbs}} Fats {{item.fats}}</p>
+                      </ion-col>
+                      <ion-col no-padding width-10 class="item-icon">
+                        <ion-icon name="arrow-forward"></ion-icon>
+                      </ion-col>
+                    </ion-row>
+                  </button>
+                </ion-list>
+              </div>
+            </div>
+          </div>           
+
+          <div *ngFor="let key of guide.snack_1 | keys">
+            <ion-item-divider>Snack</ion-item-divider>
+            <div class="list-mini-content">
+              <div class="list-mini">
+                <ion-list>
+                  <button class="list-item" 
+                    ion-item *ngFor="let item of recipes | async | searchfilter: '$key' : guide.snack_1[key].id" 
+                    (click)="toRecipePage(item)">
+                    <ion-row no-padding class="content-row one-line">
+                      <ion-col no-padding width-18 class="item-avatar">
+                        <img-loader [src]="item.image" ></img-loader>
+                      </ion-col>
+                      <ion-col no-padding width-72 class="item-content">
+                        <h3 class="item-title">{{item.name}}</h3>
+                        <p class="item-description">Protein {{item.protein}} Carbs {{item.carbs}} Fats {{item.fats}}</p>
+                      </ion-col>
+                      <ion-col no-padding width-10 class="item-icon">
+                        <ion-icon name="arrow-forward"></ion-icon>
+                      </ion-col>
+                    </ion-row>
+                  </button>
+                </ion-list>
+              </div>
+            </div>
+          </div>          
+
+          <div *ngFor="let key of guide.lunch | keys">
+            <ion-item-divider>Lunch</ion-item-divider>
+            <div class="list-mini-content">
+              <div class="list-mini">
+                <ion-list>
+                  <button class="list-item" 
+                    ion-item *ngFor="let item of recipes | async | searchfilter: '$key' : guide.lunch[key].id" 
+                    (click)="toRecipePage(item)">
+                    <ion-row no-padding class="content-row one-line">
+                      <ion-col no-padding width-18 class="item-avatar">
+                        <img-loader [src]="item.image" ></img-loader>
+                      </ion-col>
+                      <ion-col no-padding width-72 class="item-content">
+                        <h3 class="item-title">{{item.name}}</h3>
+                        <p class="item-description">Protein {{item.protein}} Carbs {{item.carbs}} Fats {{item.fats}}</p>
+                      </ion-col>
+                      <ion-col no-padding width-10 class="item-icon">
+                        <ion-icon name="arrow-forward"></ion-icon>
+                      </ion-col>
+                    </ion-row>
+                  </button>
+                </ion-list>
+              </div>
+            </div>
+          </div>  
+
+          <div *ngFor="let key of guide.snack_2 | keys">
+            <ion-item-divider>Snack</ion-item-divider>
+            <div class="list-mini-content">
+              <div class="list-mini">
+                <ion-list>
+                  <button class="list-item" 
+                    ion-item *ngFor="let item of recipes | async | searchfilter: '$key' : guide.snack_2[key].id" 
+                    (click)="toRecipePage(item)">
+                    <ion-row no-padding class="content-row one-line">
+                      <ion-col no-padding width-18 class="item-avatar">
+                        <img-loader [src]="item.image" ></img-loader>
+                      </ion-col>
+                      <ion-col no-padding width-72 class="item-content">
+                        <h3 class="item-title">{{item.name}}</h3>
+                        <p class="item-description">Protein {{item.protein}} Carbs {{item.carbs}} Fats {{item.fats}}</p>
+                      </ion-col>
+                      <ion-col no-padding width-10 class="item-icon">
+                        <ion-icon name="arrow-forward"></ion-icon>
+                      </ion-col>
+                    </ion-row>
+                  </button>
+                </ion-list>
+              </div>
+            </div>
+          </div>         
+
+          <div *ngFor="let key of guide.dinner | keys">
+            <ion-item-divider>Dinner</ion-item-divider>
+            <div class="list-mini-content">
+              <div class="list-mini">
+                <ion-list>
+                  <button class="list-item" 
+                    ion-item *ngFor="let item of recipes | async | searchfilter: '$key' : guide.dinner[key].id" 
+                    (click)="toRecipePage(item)">
+                    <ion-row no-padding class="content-row one-line">
+                      <ion-col no-padding width-18 class="item-avatar">
+                        <img-loader [src]="item.image" ></img-loader>
+                      </ion-col>
+                      <ion-col no-padding width-72 class="item-content">
+                        <h3 class="item-title">{{item.name}}</h3>
+                        <p class="item-description">Protein {{item.protein}} Carbs {{item.carbs}} Fats {{item.fats}}</p>
+                      </ion-col>
+                      <ion-col no-padding width-10 class="item-icon">
+                        <ion-icon name="arrow-forward"></ion-icon>
+                      </ion-col>
+                    </ion-row>
+                  </button>
+                </ion-list>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ion-item-group>
+    </div>    
+
+    <div *ngSwitchCase="'friday'">
+      <ion-item-group class="filters-group">
+        <div *ngFor="let guide of mealGuides | async | searchfilter: '$key' : 'friday'">
+          <div *ngFor="let key of guide.breakfast | keys">
+            <ion-item-divider>Breakfast</ion-item-divider>
+            <div class="list-mini-content">
+              <div class="list-mini">
+                <ion-list>
+                  <button class="list-item" 
+                    ion-item *ngFor="let item of recipes | async | searchfilter: '$key' : guide.breakfast[key].id" 
+                    (click)="toRecipePage(item)">
+                    <ion-row no-padding class="content-row one-line">
+                      <ion-col no-padding width-18 class="item-avatar">
+                        <img-loader [src]="item.image" ></img-loader>
+                      </ion-col>
+                      <ion-col no-padding width-72 class="item-content">
+                        <h3 class="item-title">{{item.name}}</h3>
+                        <p class="item-description">Protein {{item.protein}} Carbs {{item.carbs}} Fats {{item.fats}}</p>
+                      </ion-col>
+                      <ion-col no-padding width-10 class="item-icon">
+                        <ion-icon name="arrow-forward"></ion-icon>
+                      </ion-col>
+                    </ion-row>
+                  </button>
+                </ion-list>
+              </div>
+            </div>
+          </div>           
+
+          <div *ngFor="let key of guide.snack_1 | keys">
+            <ion-item-divider>Snack</ion-item-divider>
+            <div class="list-mini-content">
+              <div class="list-mini">
+                <ion-list>
+                  <button class="list-item" 
+                    ion-item *ngFor="let item of recipes | async | searchfilter: '$key' : guide.snack_1[key].id" 
+                    (click)="toRecipePage(item)">
+                    <ion-row no-padding class="content-row one-line">
+                      <ion-col no-padding width-18 class="item-avatar">
+                        <img-loader [src]="item.image" ></img-loader>
+                      </ion-col>
+                      <ion-col no-padding width-72 class="item-content">
+                        <h3 class="item-title">{{item.name}}</h3>
+                        <p class="item-description">Protein {{item.protein}} Carbs {{item.carbs}} Fats {{item.fats}}</p>
+                      </ion-col>
+                      <ion-col no-padding width-10 class="item-icon">
+                        <ion-icon name="arrow-forward"></ion-icon>
+                      </ion-col>
+                    </ion-row>
+                  </button>
+                </ion-list>
+              </div>
+            </div>
+          </div>          
+
+          <div *ngFor="let key of guide.lunch | keys">
+            <ion-item-divider>Lunch</ion-item-divider>
+            <div class="list-mini-content">
+              <div class="list-mini">
+                <ion-list>
+                  <button class="list-item" 
+                    ion-item *ngFor="let item of recipes | async | searchfilter: '$key' : guide.lunch[key].id" 
+                    (click)="toRecipePage(item)">
+                    <ion-row no-padding class="content-row one-line">
+                      <ion-col no-padding width-18 class="item-avatar">
+                        <img-loader [src]="item.image" ></img-loader>
+                      </ion-col>
+                      <ion-col no-padding width-72 class="item-content">
+                        <h3 class="item-title">{{item.name}}</h3>
+                        <p class="item-description">Protein {{item.protein}} Carbs {{item.carbs}} Fats {{item.fats}}</p>
+                      </ion-col>
+                      <ion-col no-padding width-10 class="item-icon">
+                        <ion-icon name="arrow-forward"></ion-icon>
+                      </ion-col>
+                    </ion-row>
+                  </button>
+                </ion-list>
+              </div>
+            </div>
+          </div>  
+
+          <div *ngFor="let key of guide.snack_2 | keys">
+            <ion-item-divider>Snack</ion-item-divider>
+            <div class="list-mini-content">
+              <div class="list-mini">
+                <ion-list>
+                  <button class="list-item" 
+                    ion-item *ngFor="let item of recipes | async | searchfilter: '$key' : guide.snack_2[key].id" 
+                    (click)="toRecipePage(item)">
+                    <ion-row no-padding class="content-row one-line">
+                      <ion-col no-padding width-18 class="item-avatar">
+                        <img-loader [src]="item.image" ></img-loader>
+                      </ion-col>
+                      <ion-col no-padding width-72 class="item-content">
+                        <h3 class="item-title">{{item.name}}</h3>
+                        <p class="item-description">Protein {{item.protein}} Carbs {{item.carbs}} Fats {{item.fats}}</p>
+                      </ion-col>
+                      <ion-col no-padding width-10 class="item-icon">
+                        <ion-icon name="arrow-forward"></ion-icon>
+                      </ion-col>
+                    </ion-row>
+                  </button>
+                </ion-list>
+              </div>
+            </div>
+          </div>         
+
+          <div *ngFor="let key of guide.dinner | keys">
+            <ion-item-divider>Dinner</ion-item-divider>
+            <div class="list-mini-content">
+              <div class="list-mini">
+                <ion-list>
+                  <button class="list-item" 
+                    ion-item *ngFor="let item of recipes | async | searchfilter: '$key' : guide.dinner[key].id" 
+                    (click)="toRecipePage(item)">
+                    <ion-row no-padding class="content-row one-line">
+                      <ion-col no-padding width-18 class="item-avatar">
+                        <img-loader [src]="item.image" ></img-loader>
+                      </ion-col>
+                      <ion-col no-padding width-72 class="item-content">
+                        <h3 class="item-title">{{item.name}}</h3>
+                        <p class="item-description">Protein {{item.protein}} Carbs {{item.carbs}} Fats {{item.fats}}</p>
+                      </ion-col>
+                      <ion-col no-padding width-10 class="item-icon">
+                        <ion-icon name="arrow-forward"></ion-icon>
+                      </ion-col>
+                    </ion-row>
+                  </button>
+                </ion-list>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ion-item-group>
+    </div>    
+
+    <div *ngSwitchCase="'saturday'">
+      <ion-item-group class="filters-group">
+        <div *ngFor="let guide of mealGuides | async | searchfilter: '$key' : 'saturday'">
+          <div *ngFor="let key of guide.breakfast | keys">
+            <ion-item-divider>Breakfast</ion-item-divider>
+            <div class="list-mini-content">
+              <div class="list-mini">
+                <ion-list>
+                  <button class="list-item" 
+                    ion-item *ngFor="let item of recipes | async | searchfilter: '$key' : guide.breakfast[key].id" 
+                    (click)="toRecipePage(item)">
+                    <ion-row no-padding class="content-row one-line">
+                      <ion-col no-padding width-18 class="item-avatar">
+                        <img-loader [src]="item.image" ></img-loader>
+                      </ion-col>
+                      <ion-col no-padding width-72 class="item-content">
+                        <h3 class="item-title">{{item.name}}</h3>
+                        <p class="item-description">Protein {{item.protein}} Carbs {{item.carbs}} Fats {{item.fats}}</p>
+                      </ion-col>
+                      <ion-col no-padding width-10 class="item-icon">
+                        <ion-icon name="arrow-forward"></ion-icon>
+                      </ion-col>
+                    </ion-row>
+                  </button>
+                </ion-list>
+              </div>
+            </div>
+          </div>           
+
+          <div *ngFor="let key of guide.snack_1 | keys">
+            <ion-item-divider>Snack</ion-item-divider>
+            <div class="list-mini-content">
+              <div class="list-mini">
+                <ion-list>
+                  <button class="list-item" 
+                    ion-item *ngFor="let item of recipes | async | searchfilter: '$key' : guide.snack_1[key].id" 
+                    (click)="toRecipePage(item)">
+                    <ion-row no-padding class="content-row one-line">
+                      <ion-col no-padding width-18 class="item-avatar">
+                        <img-loader [src]="item.image" ></img-loader>
+                      </ion-col>
+                      <ion-col no-padding width-72 class="item-content">
+                        <h3 class="item-title">{{item.name}}</h3>
+                        <p class="item-description">Protein {{item.protein}} Carbs {{item.carbs}} Fats {{item.fats}}</p>
+                      </ion-col>
+                      <ion-col no-padding width-10 class="item-icon">
+                        <ion-icon name="arrow-forward"></ion-icon>
+                      </ion-col>
+                    </ion-row>
+                  </button>
+                </ion-list>
+              </div>
+            </div>
+          </div>          
+
+          <div *ngFor="let key of guide.lunch | keys">
+            <ion-item-divider>Lunch</ion-item-divider>
+            <div class="list-mini-content">
+              <div class="list-mini">
+                <ion-list>
+                  <button class="list-item" 
+                    ion-item *ngFor="let item of recipes | async | searchfilter: '$key' : guide.lunch[key].id" 
+                    (click)="toRecipePage(item)">
+                    <ion-row no-padding class="content-row one-line">
+                      <ion-col no-padding width-18 class="item-avatar">
+                        <img-loader [src]="item.image" ></img-loader>
+                      </ion-col>
+                      <ion-col no-padding width-72 class="item-content">
+                        <h3 class="item-title">{{item.name}}</h3>
+                        <p class="item-description">Protein {{item.protein}} Carbs {{item.carbs}} Fats {{item.fats}}</p>
+                      </ion-col>
+                      <ion-col no-padding width-10 class="item-icon">
+                        <ion-icon name="arrow-forward"></ion-icon>
+                      </ion-col>
+                    </ion-row>
+                  </button>
+                </ion-list>
+              </div>
+            </div>
+          </div>  
+
+          <div *ngFor="let key of guide.snack_2 | keys">
+            <ion-item-divider>Snack</ion-item-divider>
+            <div class="list-mini-content">
+              <div class="list-mini">
+                <ion-list>
+                  <button class="list-item" 
+                    ion-item *ngFor="let item of recipes | async | searchfilter: '$key' : guide.snack_2[key].id" 
+                    (click)="toRecipePage(item)">
+                    <ion-row no-padding class="content-row one-line">
+                      <ion-col no-padding width-18 class="item-avatar">
+                        <img-loader [src]="item.image" ></img-loader>
+                      </ion-col>
+                      <ion-col no-padding width-72 class="item-content">
+                        <h3 class="item-title">{{item.name}}</h3>
+                        <p class="item-description">Protein {{item.protein}} Carbs {{item.carbs}} Fats {{item.fats}}</p>
+                      </ion-col>
+                      <ion-col no-padding width-10 class="item-icon">
+                        <ion-icon name="arrow-forward"></ion-icon>
+                      </ion-col>
+                    </ion-row>
+                  </button>
+                </ion-list>
+              </div>
+            </div>
+          </div>         
+
+          <div *ngFor="let key of guide.dinner | keys">
+            <ion-item-divider>Dinner</ion-item-divider>
+            <div class="list-mini-content">
+              <div class="list-mini">
+                <ion-list>
+                  <button class="list-item" 
+                    ion-item *ngFor="let item of recipes | async | searchfilter: '$key' : guide.dinner[key].id" 
+                    (click)="toRecipePage(item)">
+                    <ion-row no-padding class="content-row one-line">
+                      <ion-col no-padding width-18 class="item-avatar">
+                        <img-loader [src]="item.image" ></img-loader>
+                      </ion-col>
+                      <ion-col no-padding width-72 class="item-content">
+                        <h3 class="item-title">{{item.name}}</h3>
+                        <p class="item-description">Protein {{item.protein}} Carbs {{item.carbs}} Fats {{item.fats}}</p>
+                      </ion-col>
+                      <ion-col no-padding width-10 class="item-icon">
+                        <ion-icon name="arrow-forward"></ion-icon>
+                      </ion-col>
+                    </ion-row>
+                  </button>
+                </ion-list>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ion-item-group>
+    </div>    
+
+    <div *ngSwitchCase="'sunday'">
+      <ion-item-group class="filters-group">
+        <div *ngFor="let guide of mealGuides | async | searchfilter: '$key' : 'sunday'">
+          <div *ngFor="let key of guide.breakfast | keys">
+            <ion-item-divider>Breakfast</ion-item-divider>
+            <div class="list-mini-content">
+              <div class="list-mini">
+                <ion-list>
+                  <button class="list-item" 
+                    ion-item *ngFor="let item of recipes | async | searchfilter: '$key' : guide.breakfast[key].id" 
+                    (click)="toRecipePage(item)">
+                    <ion-row no-padding class="content-row one-line">
+                      <ion-col no-padding width-18 class="item-avatar">
+                        <img-loader [src]="item.image" ></img-loader>
+                      </ion-col>
+                      <ion-col no-padding width-72 class="item-content">
+                        <h3 class="item-title">{{item.name}}</h3>
+                        <p class="item-description">Protein {{item.protein}} Carbs {{item.carbs}} Fats {{item.fats}}</p>
+                      </ion-col>
+                      <ion-col no-padding width-10 class="item-icon">
+                        <ion-icon name="arrow-forward"></ion-icon>
+                      </ion-col>
+                    </ion-row>
+                  </button>
+                </ion-list>
+              </div>
+            </div>
+          </div>           
+
+          <div *ngFor="let key of guide.snack_1 | keys">
+            <ion-item-divider>Snack</ion-item-divider>
+            <div class="list-mini-content">
+              <div class="list-mini">
+                <ion-list>
+                  <button class="list-item" 
+                    ion-item *ngFor="let item of recipes | async | searchfilter: '$key' : guide.snack_1[key].id" 
+                    (click)="toRecipePage(item)">
+                    <ion-row no-padding class="content-row one-line">
+                      <ion-col no-padding width-18 class="item-avatar">
+                        <img-loader [src]="item.image" ></img-loader>
+                      </ion-col>
+                      <ion-col no-padding width-72 class="item-content">
+                        <h3 class="item-title">{{item.name}}</h3>
+                        <p class="item-description">Protein {{item.protein}} Carbs {{item.carbs}} Fats {{item.fats}}</p>
+                      </ion-col>
+                      <ion-col no-padding width-10 class="item-icon">
+                        <ion-icon name="arrow-forward"></ion-icon>
+                      </ion-col>
+                    </ion-row>
+                  </button>
+                </ion-list>
+              </div>
+            </div>
+          </div>          
+
+          <div *ngFor="let key of guide.lunch | keys">
+            <ion-item-divider>Lunch</ion-item-divider>
+            <div class="list-mini-content">
+              <div class="list-mini">
+                <ion-list>
+                  <button class="list-item" 
+                    ion-item *ngFor="let item of recipes | async | searchfilter: '$key' : guide.lunch[key].id" 
+                    (click)="toRecipePage(item)">
+                    <ion-row no-padding class="content-row one-line">
+                      <ion-col no-padding width-18 class="item-avatar">
+                        <img-loader [src]="item.image" ></img-loader>
+                      </ion-col>
+                      <ion-col no-padding width-72 class="item-content">
+                        <h3 class="item-title">{{item.name}}</h3>
+                        <p class="item-description">Protein {{item.protein}} Carbs {{item.carbs}} Fats {{item.fats}}</p>
+                      </ion-col>
+                      <ion-col no-padding width-10 class="item-icon">
+                        <ion-icon name="arrow-forward"></ion-icon>
+                      </ion-col>
+                    </ion-row>
+                  </button>
+                </ion-list>
+              </div>
+            </div>
+          </div>  
+
+          <div *ngFor="let key of guide.snack_2 | keys">
+            <ion-item-divider>Snack</ion-item-divider>
+            <div class="list-mini-content">
+              <div class="list-mini">
+                <ion-list>
+                  <button class="list-item" 
+                    ion-item *ngFor="let item of recipes | async | searchfilter: '$key' : guide.snack_2[key].id" 
+                    (click)="toRecipePage(item)">
+                    <ion-row no-padding class="content-row one-line">
+                      <ion-col no-padding width-18 class="item-avatar">
+                        <img-loader [src]="item.image" ></img-loader>
+                      </ion-col>
+                      <ion-col no-padding width-72 class="item-content">
+                        <h3 class="item-title">{{item.name}}</h3>
+                        <p class="item-description">Protein {{item.protein}} Carbs {{item.carbs}} Fats {{item.fats}}</p>
+                      </ion-col>
+                      <ion-col no-padding width-10 class="item-icon">
+                        <ion-icon name="arrow-forward"></ion-icon>
+                      </ion-col>
+                    </ion-row>
+                  </button>
+                </ion-list>
+              </div>
+            </div>
+          </div>         
+
+          <div *ngFor="let key of guide.dinner | keys">
+            <ion-item-divider>Dinner</ion-item-divider>
+            <div class="list-mini-content">
+              <div class="list-mini">
+                <ion-list>
+                  <button class="list-item" 
+                    ion-item *ngFor="let item of recipes | async | searchfilter: '$key' : guide.dinner[key].id" 
+                    (click)="toRecipePage(item)">
+                    <ion-row no-padding class="content-row one-line">
+                      <ion-col no-padding width-18 class="item-avatar">
+                        <img-loader [src]="item.image" ></img-loader>
+                      </ion-col>
+                      <ion-col no-padding width-72 class="item-content">
+                        <h3 class="item-title">{{item.name}}</h3>
+                        <p class="item-description">Protein {{item.protein}} Carbs {{item.carbs}} Fats {{item.fats}}</p>
+                      </ion-col>
+                      <ion-col no-padding width-10 class="item-icon">
+                        <ion-icon name="arrow-forward"></ion-icon>
+                      </ion-col>
+                    </ion-row>
+                  </button>
+                </ion-list>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ion-item-group>
+    </div>    
+
+    <!-- End Meal Guide -->
+    
+		</div>
+	</div>
+
+	<div *ngSwitchCase="'recipes'">
+  <ion-item-group class="filters-group">
+  <ion-item-divider>Filter Recipes</ion-item-divider>
+    <form [formGroup]="checkboxTagsForm">
+      <ion-list class="checkbox-tags">
+        <ion-item class="checkbox-tag">
+          <ion-label>Breakfast</ion-label>
+          <ion-checkbox formControlName="tag_1"></ion-checkbox>
+        </ion-item>
+        <ion-item class="checkbox-tag">
+          <ion-label>Lunch</ion-label>
+          <ion-checkbox formControlName="tag_2"></ion-checkbox>
+        </ion-item>
+        <ion-item class="checkbox-tag">
+          <ion-label>Dinner</ion-label>
+          <ion-checkbox formControlName="tag_3"></ion-checkbox>
+        </ion-item>
+        <ion-item class="checkbox-tag">
+          <ion-label>Snacks</ion-label>
+          <ion-checkbox formControlName="tag_4"></ion-checkbox>
+        </ion-item>
+      </ion-list>
+    </form>
+  </ion-item-group>
+
+  <div *ngIf="checkboxTagsForm.controls.tag_1.value">
+  <ion-item-divider>Breakfast</ion-item-divider>
+  <div class="list-mini-content">
+  <div class="list-mini">
+    <ion-list>
+      <button class="list-item" ion-item *ngFor="let item of recipes | async | searchfilter: 'meal_type' : 'breakfast'" (click)="toRecipePage(item)">
+        <ion-row no-padding class="content-row one-line">
+          <!-- You can limit the rows of the description by using the class one-line. If you remove it, all the content from the row will be shown -->
+          <ion-col no-padding width-18 class="item-avatar">
+            <img-loader [src]="item.image" ></img-loader>
+          </ion-col>
+          <ion-col no-padding width-72 class="item-content">
+            <h3 class="item-title">{{item.name}}</h3>
+            <p class="item-description">Protein {{item.protein}} Carbs {{item.carbs}} Fats {{item.fats}}</p>
+          </ion-col>
+          <ion-col no-padding width-10 class="item-icon">
+            <ion-icon name="arrow-forward"></ion-icon>
+          </ion-col>
+        </ion-row>
+      </button>
+    </ion-list>
+  </div>
+  </div>  
+  </div>   
+
+  <div *ngIf="checkboxTagsForm.controls.tag_2.value">
+  <ion-item-divider>Lunch</ion-item-divider>
+  <div class="list-mini-content">
+  <div class="list-mini">
+    <ion-list>
+      <button class="list-item" ion-item *ngFor="let item of recipes | async | searchfilter: 'meal_type' : 'lunch'" (click)="toRecipePage(item)">
+        <ion-row no-padding class="content-row one-line">
+          <!-- You can limit the rows of the description by using the class one-line. If you remove it, all the content from the row will be shown -->
+          <ion-col no-padding width-18 class="item-avatar">
+            <img-loader [src]="item.image" ></img-loader>
+          </ion-col>
+          <ion-col no-padding width-72 class="item-content">
+            <h3 class="item-title">{{item.name}}</h3>
+            <p class="item-description">Protein {{item.protein}} Carbs {{item.carbs}} Fats {{item.fats}}</p>
+          </ion-col>
+          <ion-col no-padding width-10 class="item-icon">
+            <ion-icon name="arrow-forward"></ion-icon>
+          </ion-col>
+        </ion-row>
+      </button>
+    </ion-list>
+  </div>
+  </div>  
+  </div>   
+
+  <div *ngIf="checkboxTagsForm.controls.tag_3.value">
+  <ion-item-divider>Dinner</ion-item-divider>
+  <div class="list-mini-content">
+  <div class="list-mini">
+    <ion-list>
+      <button class="list-item" ion-item *ngFor="let item of recipes | async | searchfilter: 'meal_type' : 'dinner'" (click)="toRecipePage(item)">
+        <ion-row no-padding class="content-row one-line">
+          <!-- You can limit the rows of the description by using the class one-line. If you remove it, all the content from the row will be shown -->
+          <ion-col no-padding width-18 class="item-avatar">
+            <img-loader [src]="item.image" ></img-loader>
+          </ion-col>
+          <ion-col no-padding width-72 class="item-content">
+            <h3 class="item-title">{{item.name}}</h3>
+            <p class="item-description">Protein {{item.protein}} Carbs {{item.carbs}} Fats {{item.fats}}</p>
+          </ion-col>
+          <ion-col no-padding width-10 class="item-icon">
+            <ion-icon name="arrow-forward"></ion-icon>
+          </ion-col>
+        </ion-row>
+      </button>
+    </ion-list>
+  </div>
+  </div>  
+  </div>   
+
+  <div *ngIf="checkboxTagsForm.controls.tag_4.value">
+  <ion-item-divider>Snacks</ion-item-divider>
+  <div class="list-mini-content">
+  <div class="list-mini">
+    <ion-list>
+      <button class="list-item" ion-item *ngFor="let item of recipes | async | searchfilter: 'meal_type' : 'snack'" (click)="toRecipePage(item)">
+        <ion-row no-padding class="content-row one-line">
+          <!-- You can limit the rows of the description by using the class one-line. If you remove it, all the content from the row will be shown -->
+          <ion-col no-padding width-18 class="item-avatar">
+            <img-loader [src]="item.image" ></img-loader>
+          </ion-col>
+          <ion-col no-padding width-72 class="item-content">
+            <h3 class="item-title">{{item.name}}</h3>
+            <p class="item-description">Protein {{item.protein}} Carbs {{item.carbs}} Fats {{item.fats}}</p>
+          </ion-col>
+          <ion-col no-padding width-10 class="item-icon">
+            <ion-icon name="arrow-forward"></ion-icon>
+          </ion-col>
+        </ion-row>
+      </button>
+    </ion-list>
+  </div>
+  </div>  
+  </div> 
+
+
+	</div>
+</div>
+
+</ion-content>

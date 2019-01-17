@@ -1,0 +1,139 @@
+{
+  "name": "MyFitTribe",
+  "author": "My Fit Tribe Pty Ltd",
+  "homepage": "https://myfittribe.com.au",
+  "private": true,
+  "scripts": {
+    "ionic:build": "ionic-app-scripts build",
+    "ionic:serve": "ionic-app-scripts serve"
+  },
+  "dependencies": {
+    "@angular/common": "4.0.2",
+    "@angular/compiler": "4.0.2",
+    "@angular/compiler-cli": "4.0.2",
+    "@angular/core": "4.0.2",
+    "@angular/forms": "4.0.2",
+    "@angular/http": "4.0.2",
+    "@angular/platform-browser": "4.0.2",
+    "@angular/platform-browser-dynamic": "4.0.2",
+    "@ionic-native-mocks/in-app-purchase": "^2.0.3",
+    "@ionic-native/call-number": "3.4.4",
+    "@ionic-native/core": "3.6.1",
+    "@ionic-native/device": "^4.1.0",
+    "@ionic-native/email-composer": "^3.7.0",
+    "@ionic-native/facebook": "3.4.4",
+    "@ionic-native/file": "^4.1.0",
+    "@ionic-native/file-transfer": "^4.1.0",
+    "@ionic-native/geolocation": "3.4.4",
+    "@ionic-native/google-plus": "3.4.4",
+    "@ionic-native/in-app-browser": "3.4.4",
+    "@ionic-native/in-app-purchase": "^4.1.0",
+    "@ionic-native/in-app-purchase-2": "^4.2.0",
+    "@ionic-native/keyboard": "3.4.4",
+    "@ionic-native/native-storage": "3.4.4",
+    "@ionic-native/social-sharing": "3.4.4",
+    "@ionic-native/splash-screen": "3.4.4",
+    "@ionic-native/sqlite": "^4.1.0",
+    "@ionic-native/status-bar": "3.4.4",
+    "@ionic/storage": "2.0.1",
+    "@types/googlemaps": "3.25.38",
+    "angularfire2": "^4.0.0-rc0",
+    "angularfire2-offline": "^4.2.1",
+    "bourbon": "4.3.4",
+    "build": "^0.1.4",
+    "cc.fovea.cordova.purchase": "^7.0.1",
+    "chart.js": "^2.6.0",
+    "cordova-android": "^6.2.3",
+    "cordova-ios": "^4.4.0",
+    "cordova-plugin-compat": "^1.1.0",
+    "cordova-plugin-console": "^1.0.7",
+    "cordova-plugin-device": "^1.1.6",
+    "cordova-plugin-file": "^4.3.3",
+    "cordova-plugin-file-transfer": "^1.6.3",
+    "cordova-plugin-inappbrowser": "^1.7.1",
+    "cordova-plugin-inapppurchase": "^1.1.0",
+    "cordova-plugin-nativestorage": "^2.2.2",
+    "cordova-plugin-splashscreen": "^4.0.3",
+    "cordova-plugin-statusbar": "^2.2.3",
+    "cordova-plugin-whitelist": "^1.3.2",
+    "cordova-sqlite-storage": "^2.0.4",
+    "firebase": "^4.3.0",
+    "ionic-angular": "3.1.1",
+    "ionic-image-loader": "^4.1.1",
+    "ionic-plugin-keyboard": "^2.2.1",
+    "ionicons": "3.0.0",
+    "rxjs": "5.1.1",
+    "sw-toolbox": "3.4.0",
+    "zone.js": "0.8.5"
+  },
+  "devDependencies": {
+    "@ionic/app-scripts": "1.3.4",
+    "@ionic/cli-plugin-cordova": "1.6.1",
+    "@ionic/cli-plugin-ionic-angular": "1.4.1",
+    "ionic": "3.9.2",
+    "typescript": "2.2.1"
+  },
+  "cordovaPlugins": [
+    "cordova-plugin-device",
+    "cordova-plugin-console",
+    "cordova-plugin-whitelist",
+    "cordova-plugin-splashscreen",
+    "cordova-plugin-statusbar",
+    "ionic-plugin-keyboard",
+    "cordova-plugin-nativestorage",
+    "cordova-plugin-inappbrowser",
+    "cordova-plugin-x-socialsharing",
+    {
+      "locator": "https://github.com/Rohfosho/CordovaCallNumberPlugin.git",
+      "id": "call-number"
+    },
+    "cordova-plugin-geolocation",
+    {
+      "id": "cordova-plugin-facebook4",
+      "locator": "cordova-plugin-facebook4",
+      "variables": {
+        "APP_ID": "826720427470540",
+        "APP_NAME": "Ion2FullApp"
+      }
+    }
+  ],
+  "cordovaPlatforms": [
+    {
+      "platform": "ios",
+      "version": "~4.1.1",
+      "locator": "ios"
+    },
+    {
+      "platform": "android",
+      "version": "~5.1.1",
+      "locator": "android"
+    }
+  ],
+  "description": "ion2-FullApp: The Best Ionic 2 Starter app.",
+  "config": {
+    "ionic_sass": "./config/sass.config.js"
+  },
+  "cordova": {
+    "platforms": [
+      "android",
+      "ios"
+    ],
+    "plugins": {
+      "cordova-plugin-console": {},
+      "cordova-plugin-device": {},
+      "cordova-plugin-inappbrowser": {},
+      "cordova-plugin-nativestorage": {},
+      "cordova-plugin-splashscreen": {},
+      "cordova-plugin-statusbar": {},
+      "cordova-plugin-whitelist": {},
+      "ionic-plugin-keyboard": {},
+      "cordova-plugin-inapppurchase": {},
+      "cordova-sqlite-storage": {},
+      "cordova-plugin-file": {},
+      "cordova-plugin-file-transfer": {},
+      "cc.fovea.cordova.purchase": {
+        "BILLING_KEY": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAnyTQTHl7UmRvL+yvtnZcRR8YllLxBSmSZ+gBVROC+MPZ+Mo1YOgC6dc3jjJH4EHkJuGnf98g5sIMCWiwss8VQERd3UOmaebfbMbVEu48LDAEbniJ5drdg77Lf8eyNjzGUd5eLGk8A1bPmetyQQ+cv4P8Z/eu7QNVo51TZLjMbkSXclbX+4M2MsEeUYsh9oe9NluzWUf4IoOmpwP6+LsOGEQYUC79Qr05P2hJ7MFRgkLUN0GeQMQhlvTJxDIA8aUy2/Ieu1+C0qFy42zljPHj+Gh/NbmaAUySzskcjDIF0eZ0pO9tu1+HvchY/9IS3UEO4PnZ7Nk4wyK18/Slb8Ro3QIDAQAB"
+      }
+    }
+  }
+}

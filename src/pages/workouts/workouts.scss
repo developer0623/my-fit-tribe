@@ -1,0 +1,5 @@
+page-workouts {
+	ion-content {
+		@include basic-card-styles($white-d);
+	}
+}

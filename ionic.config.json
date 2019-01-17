@@ -1,0 +1,8 @@
+{
+  "name": "My-Fit-Tribe",
+  "app_id": "f0cf33a7",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}

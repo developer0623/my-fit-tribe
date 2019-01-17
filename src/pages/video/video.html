@@ -1,0 +1,76 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title></ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="contact-card-content">
+
+  <ion-row class="contact-details-row" wrap>
+    <ion-col no-padding width-100>
+      <h2 class="contact-name">{{ video.name }}</h2>
+    </ion-col>
+    <ion-col no-padding width-100>
+      <p class="contact-description">
+        {{ video.byline }}
+      </p>
+    </ion-col>
+  </ion-row>
+
+    <iframe [src]="ytSettings | safe" frameborder="0" allowfullscreen></iframe>
+
+
+  <!--<div class="button-bar">
+    <button ion-button primary (click)="call(contact.phone)">
+      <ion-icon name="call"></ion-icon>
+    </button>
+    <button ion-button primary (click)="sendMail(contact.email)">
+      <ion-icon name="mail"></ion-icon>
+    </button>
+    <button ion-button primary (click)="openInAppBrowser(contact.website)">
+      <ion-icon name="globe"></ion-icon>
+    </button>
+  </div>-->
+        
+      
+      
+        <div padding>
+        <h3 class="item-title">
+          {{ video.card_title }}
+        </h3>
+        <p class="item-text">
+          {{ video.description }}
+        </p>
+        </div>
+      
+
+      <ion-list class="workout-list">
+      <ion-item-divider class="notifications-divider">Workout: {{ video.rounds }} Rounds</ion-item-divider>
+    <!--<button ion-item *ngFor="let exercise of exercises | async" class="list-item">
+      {{ exercise.reps }} x {{ exercise.name }}
+    </button>-->
+
+
+      <ion-item *ngFor="let exercise of exercises | async">
+      <h2 class="item-title">{{ exercise.name }}</h2>
+      <ion-note class="item-time" item-right>{{ exercise.reps }}</ion-note>
+      </ion-item>
+    </ion-list>
+
+   
+
+    
+
+       <ion-row class="contact-details-row" wrap *ngIf="video.last_note">
+    <ion-col no-padding width-100>
+      <h2 class="contact-name">{{ video.last_note }}</h2>
+    </ion-col>
+  </ion-row>
+
+
+</ion-content>
+

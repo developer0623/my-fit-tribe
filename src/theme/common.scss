@@ -1,0 +1,42 @@
+// Basic
+@import "./common/scroll-bar";
+@import "./common/grid";
+@import "./common/misc/shadow";
+@import "./common/misc/multi-line-ellipsis";
+
+// Elements
+@import "./common/components/components";
+@import "./common/inputs/inputs";
+@import "./common/buttons/buttons";
+@import "./common/side-menu";
+@import "./common/header";
+@import "./common/lists";
+@import "./common/cards";
+
+// Views
+@import "./common/auth/auth";
+@import "./common/legal/legal";
+@import "./common/layouts/lists";
+
+
+// FX
+@import "./common/dividers/dividers";
+
+.trial-remaining {
+	text-align: center;
+}
+.contact-details-row {
+	padding: 0 16px;
+	background-color: #231F20;
+	color: #ffffff;
+}
+.list-mini img-loader {
+	width: 16vw !important;
+	height: 16vw !important;
+	border-radius: 5px !important;
+}
+.list-big img-loader {
+	width: 30vw !important;
+	height: 30vw !important;
+	border-radius: 5px !important;
+}

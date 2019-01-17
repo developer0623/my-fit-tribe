@@ -1,0 +1,121 @@
+page-macro {
+$categories-heading-image-height: 150px;
+
+p, ol, li, ul {color: $black-c;}
+
+		.contact-details-row
+		{
+			background: $black-a;
+			color: $white-b;
+			padding: 16px;
+
+			.contact-name
+			{
+				margin: 0px;
+				font-size: 2.2rem;
+				font-weight: 400;
+			}
+
+			.rating-col
+			{
+				display: flex;
+				@include align-items(center);
+				@include justify-content(flex-end);
+			}
+
+			.contact-rating
+			{
+				@include rating-item-styles($white-d, $theme-color-1);
+
+				.rating-item
+				{
+					box-shadow: none;
+					background: transparent;
+					margin: 2px 0px;
+					min-height: 0px;
+
+					.rating {
+						padding: 0px !important;
+						font-size: 0.9em !important;
+						color: $theme-color-1;
+
+						
+					}
+				}
+			}
+
+			.contact-description
+			{
+				margin: 8px 0px 0px;
+				color: $white-d;
+			}
+		}
+
+
+
+.item-title
+			{
+				margin: 0px;
+				margin-bottom: 12px;
+				padding: 0px;
+				letter-spacing: 1.1px;
+				color: $theme-color-2;
+			}
+
+.item-text
+	{
+		line-height: 1.6;
+		color: $text-color;
+		margin: 0px;
+	}	
+	
+	.header-logo {
+    width: 34vw;
+    margin: 0 auto;
+}		
+
+		.image-heading
+		{
+			height: $categories-heading-image-height;
+
+			.bg-overlay
+			{
+				z-index: 1;
+				background-color: rgba($black-c, .6);
+			}
+
+			ion-spinner {
+				z-index: 2;
+			}
+
+			@include spinner-color($white);
+
+			.heading-row
+			{
+				height: 100%;
+				width: 100%;
+				z-index: 3;
+  			position: absolute;
+				@include align-items(center);
+
+				.main-title
+				{
+					@include categories-title-style($white);
+					font-size: 10vw;
+				}
+			}
+		}
+
+		.image-heading .heading-row .main-title {
+    display: block;
+    width: 90%;
+    text-align: center;
+    font-size: 8vw;
+    font-weight: 900;
+    letter-spacing: 0.4px;
+    color: #FFFFFF;
+    margin: 0px auto;
+    font-size: 10vw;
+}
+}
+

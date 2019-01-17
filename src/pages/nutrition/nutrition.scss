@@ -1,0 +1,53 @@
+page-nutrition {
+	ion-header .toolbar-background {
+    background-color: $theme-color-1;
+}
+.schedule-segment
+		{
+			padding: 14px 0px;
+			background-color: $white;
+			@include element-shadow();
+
+			@include segment-button-styles($theme-color-2);
+
+			.segment-button
+			{
+				@include segment-text-styles($white-d);
+			}
+		}
+	.list-mini-content
+	{
+		background-color: color($colors, background, base);
+
+		.list-mini
+		{
+			@include layout-list-styles($theme-color-2, $white-d);
+
+			ion-list {
+				.list-item
+				{
+					.content-row
+					{
+						.item-title{
+							overflow: hidden;
+							text-overflow: ellipsis;
+							white-space: nowrap;
+						}
+
+						&.one-line
+						{
+							@include align-items(center);
+
+							.item-description
+							{
+								overflow: hidden;
+								text-overflow: ellipsis;
+								white-space: nowrap;
+							}
+						}
+					}
+				}
+			}
+		}
+	}	
+}

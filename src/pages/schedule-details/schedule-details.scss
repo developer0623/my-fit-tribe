@@ -1,0 +1,60 @@
+page-schedule-details {
+
+
+	.item-title
+			{
+				font-size: 1.4rem;
+				font-weight: 500;
+				letter-spacing: 0.2px;
+				color: $theme-color-2;
+				margin-bottom: 4px;
+			}
+
+			.item-time
+			{
+				font-size: 1.2rem;
+				font-weight: 500;
+				color: $white-d;
+				margin: 0px;
+				padding-left: 8px;
+				@include align-self(flex-middle);
+			}
+
+							.notifications-divider
+		{
+			font-size: 1.2rem;
+			font-weight: 500;
+			letter-spacing: 0.9px;
+			color: $theme-color-3;
+
+			&:not(:first-child)
+			{
+				padding-top: 30px;
+			}
+		}	
+		.text-wrapper {
+			padding: 0 16px;
+
+			p {
+				margin-top: 0 !important;
+			}
+		}
+		
+		.item-text
+			{
+				font-size: 1.4rem;
+				letter-spacing: 0.2px;
+				color: $black-d;
+				text-overflow: initial;
+			  overflow: initial;
+			  white-space: initial;
+			}		
+
+			.rating {
+						padding: 0px !important;
+						font-size: 0.9em !important;
+						color: $theme-color-1;
+
+						
+					}
+}

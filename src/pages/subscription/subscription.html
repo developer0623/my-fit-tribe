@@ -1,0 +1,48 @@
+<!--
+  Generated template for the SubscriptionPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Memberships</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+<ion-title>Welcome to My Fit Tribe</ion-title>
+<ion-title *ngIf="isTrial">Your trial has expired</ion-title>
+<p class="item-description">Join the Tribe to get full access to new workouts, recipes and meal plans added weekly you will never feel bored on your fitness journey.</p>
+
+<div *ngIf="isAnon">
+	<button ion-button block outline color="pink" (click)="toLogin()">LOGIN</button>
+	<ion-item-divider class="text-divider">OR</ion-item-divider>
+	<button ion-button block outline color="secondary" (click)="toSignup()">REGISTER</button>
+
+</div>
+
+<!--<div *ngIf="!isAnon">-->
+<div>
+<div class="membership-terms">
+<ion-title>Membership Terms</ion-title>
+<ul>
+<li>Subscriptions period is 1 month. Every 1 month your subscription renews.</li>
+<li>1 month subscription price is {{ subPrice }}</li>
+<li>Payment will be charged to iTunes Account at confirmation of purchase.</li>
+<li>Subscription automatically renews unless auto-renew is turned off at least at 24-hours before the end of the current period.</li>
+<li>You can cancel your subscription via this url: <a href="https://support.apple.com/en-us/HT202039">https://support.apple.com/en-us/HT202039</a></li>
+<li>Privacy policy: <a href="http://myfittribe.com.au/privacy-policy">http://myfittribe.com.au/privacy-policy</a></li>
+<li>Terms of use: <a href="http://myfittribe.com.au/terms-of-use">http://myfittribe.com.au/terms-of-use</a></li>
+</ul>
+</div>
+
+	<button ion-button block outline color="secondary" (click)="joinTribe()">Join Tribe - $19.99 / MONTH</button>
+  <ion-item-divider class="text-divider">OR</ion-item-divider>
+  <button ion-button block outline color="pink" (click)="logout()">LOGOUT</button>
+</div>
+
+</ion-content>

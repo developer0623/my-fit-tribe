@@ -1,0 +1,73 @@
+<ion-header class="listing-header">
+  <ion-navbar>
+    <ion-title>
+      Training
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="listing-content">
+
+  <ion-segment class="trainings-segment" [(ngModel)]="segment" (ionChange)="onSegmentChanged($event)">    
+    <ion-segment-button value="workout" (ionSelect)="onSegmentSelected($event)">
+      Workout
+    </ion-segment-button>
+    <ion-segment-button value="mindset" (ionSelect)="onSegmentSelected($event)">
+      Mindset
+    </ion-segment-button>
+  </ion-segment>
+
+  <div [ngSwitch]="segment">
+    <div *ngSwitchCase="'workout'">
+    <div class="list-big-content">
+      <div class="list-big">
+        <ion-list>
+          <button class="list-item" ion-item *ngFor="let item of workoutVideos | async" (click)="toVideoPage(item, 'workouts')">
+            <ion-row no-padding class="content-row">
+              <ion-col no-padding width-33 class="item-avatar">
+                <!--<img [src]="item.image" imageCache />-->
+                <img-loader [src]="item.image" ></img-loader>
+              </ion-col>
+              <ion-col no-padding width-57 class="item-content">
+                <h3 class="item-title">{{item.name}}</h3>
+                <p class="item-description" rows="3">{{item.byline}}</p>
+                <!-- You can change the rows quantity by using rows="X", where X can be any number for example: rows="4" -->
+              </ion-col>
+              <ion-col no-padding width-10 class="item-icon">
+                <ion-icon name="arrow-forward"></ion-icon>
+              </ion-col>
+            </ion-row>
+          </button>
+        </ion-list>
+      </div>
+    </div>
+    </div>    
+
+    <div *ngSwitchCase="'mindset'">
+    <div class="list-big-content">
+    <div padding>
+      <h2 class="main-title">Coming Soon</h2>
+      </div>
+      <div class="list-big">
+        <ion-list>
+          <button class="list-item" ion-item *ngFor="let item of mindsetVideos | async" (click)="toVideoPage(item, 'mindset')">
+            <ion-row no-padding class="content-row">
+              <ion-col no-padding width-33 class="item-avatar">
+                <preload-image class="avatar-image" [ratio]="{w:1, h:1}" [src]="item.image"></preload-image>
+              </ion-col>
+              <ion-col no-padding width-57 class="item-content">
+                <h3 class="item-title">{{item.name}}</h3>
+                <p class="item-description" rows="3">{{item.byline}}</p>
+                <!-- You can change the rows quantity by using rows="X", where X can be any number for example: rows="4" -->
+              </ion-col>
+              <ion-col no-padding width-10 class="item-icon">
+                <ion-icon name="arrow-forward"></ion-icon>
+              </ion-col>
+            </ion-row>
+          </button>
+        </ion-list>
+      </div>
+    </div>
+    </div>
+  </div>
+</ion-content>
